@@ -3,29 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tobone Coffee - Cita Rasa Kopi Nusantara</title>
     
-    <!-- Load Tailwind CSS -->
+    <title>Tobone Coffee - Kopi Gula Aren Khas Makassar</title>
+    
+    <meta name="description" content="Nikmati kesegaran Cold Brew Gula Aren dari Tobone Coffee. Kopi premium khas Makassar, dibuat segar setiap hari. Pesan sekarang, siap antar atau ambil di tempat.">
+    <meta name="keywords" content="Tobone Coffee, kopi makassar, kopi gula aren, cold brew, jual kopi online, coffee shop makassar">
+    <meta name="author" content="Tobone Coffee">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://tobonecoffee.my.id/">
+    
+    <link rel="icon" href="https://tobonecoffee.my.id/img/logo.png" type="image/png">
+    
+    <meta property="og:title" content="Tobone Coffee - Kopi Gula Aren Khas Makassar">
+    <meta property="og:description" content="Nikmati kesegaran Cold Brew Gula Aren dari Tobone Coffee. Kopi premium khas Makassar, dibuat segar setiap hari.">
+    <meta property="og:image" content="https://tobonecoffee.my.id/img/Cold%20Brew%20Gula%20Aren.jpg">
+    <meta property="og:url" content="https://tobonecoffee.my.id/">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tobone Coffee - Kopi Gula Aren Khas Makassar">
+    <meta name="twitter:description" content="Nikmati kesegaran Cold Brew Gula Aren dari Tobone Coffee. Kopi premium khas Makassar, dibuat segar setiap hari.">
+    <meta name="twitter:image" content="https://tobonecoffee.my.id/img/Cold%20Brew%20Gula%20Aren.jpg">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Load Google Font (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <meta name="google-site-verification" content="XtOo96Jl_NjjUmPyzM2TUPfDup4S_001KbMfALXurj8" />
-    <!-- Tambahkan Font Awesome CSS -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <style>
-        /* Terapkan font Inter sebagai default */
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Efek paralaks sederhana (opsional) */
         .hero-section {
             background-attachment: fixed;
         }
-        /* Sembunyikan panah di input number */
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -38,26 +53,21 @@
 </head>
 <body class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 antialiased">
 
-    <!-- ===== Header / Navigasi ===== -->
     <header class="sticky top-0 z-50 w-full bg-stone-50/90 dark:bg-stone-950/90 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo DIPERBARUI -->
             <a href="#" class="text-3xl font-bold text-amber-900 dark:text-amber-600">
                 <img src="https://tobonecoffee.my.id/img/logo.png" alt="Tobone Coffee Logo" class="h-12 w-auto">
             </a>
             
-            <!-- Menu Desktop -->
             <div class="hidden md:flex space-x-6 items-center">
                 <a href="#beranda" class="text-stone-600 dark:text-stone-300 hover:text-amber-800 dark:hover:text-amber-600 transition duration-300">Beranda</a>
                 <a href="#tentang" class="text-stone-600 dark:text-stone-300 hover:text-amber-800 dark:hover:text-amber-600 transition duration-300">Tentang</a>
                 <a href="#produk" class="text-stone-600 dark:text-stone-300 hover:text-amber-800 dark:hover:text-amber-600 transition duration-300">Produk</a>
-                <!-- Diubah: Onclick memanggil openOrderModal() -->
                 <button onclick="openOrderModal()" class="bg-amber-900 hover:bg-amber-950 text-white font-semibold py-2 px-5 rounded-full transition duration-300 shadow-lg">
                     Pesan Sekarang
                 </button>
             </div>
             
-            <!-- Tombol Menu Mobile -->
             <button id="menu-btn" class="md:hidden focus:outline-none z-30">
                 <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -65,13 +75,11 @@
             </button>
         </nav>
         
-        <!-- Menu Mobile (Dropdown) -->
         <div id="menu-links" class="hidden md:hidden absolute top-0 left-0 w-full h-screen bg-stone-50 dark:bg-stone-950 z-20">
             <div class="flex flex-col items-center justify-center h-full space-y-8">
                 <a href="#beranda" class="text-2xl text-stone-800 dark:text-stone-200 hover:text-amber-800 dark:hover:text-amber-600 transition duration-300 menu-link">Beranda</a>
                 <a href="#tentang" class="text-2xl text-stone-800 dark:text-stone-200 hover:text-amber-800 dark:hover:text-amber-600 transition duration-300 menu-link">Tentang</a>
                 <a href="#produk" class="text-2xl text-stone-800 dark:text-stone-200 hover:text-amber-800 dark:hover:text-amber-600 transition duration-300 menu-link">Produk</a>
-                <!-- Diubah: Onclick memanggil openOrderModal() -->
                 <button onclick="openOrderModal()" class="bg-amber-900 hover:bg-amber-950 text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg text-xl menu-link">
                     Pesan Sekarang
                 </button>
@@ -80,12 +88,9 @@
     </header>
 
     <main>
-        <!-- ===== Hero Section ===== -->
         <section id="beranda" class="hero-section min-h-screen flex items-center justify-center bg-cover bg-center text-white relative" style="background-image: url('https://tobonecoffee.my.id/img/Cold%20Brew%20Gula%20Aren.jpg');">
-            <!-- Overlay Gelap -->
             <div class="absolute inset-0 bg-black/60"></div>
             
-            <!-- Konten Hero -->
             <div class="container mx-auto px-6 text-center z-10">
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
                     Temukan Kenikmatan Kopi <span class="text-amber-500">Sejati</span>
@@ -99,7 +104,6 @@
             </div>
         </section>
 
-        <!-- ===== Tentang Kami / Fitur ===== -->
         <section id="tentang" class="py-24 bg-stone-100 dark:bg-stone-900">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -109,11 +113,8 @@
                     </p>
                 </div>
                 
-                <!-- Grid Fitur -->
                 <div class="grid md:grid-cols-3 gap-10">
-                    <!-- Fitur 1 -->
                     <div class="bg-stone-50 dark:bg-stone-800 p-8 rounded-xl shadow-lg text-center transform transition duration-500 hover:shadow-2xl hover:-translate-y-2">
-                        <!-- Ikon SVG -->
                         <div class="flex items-center justify-center w-16 h-16 bg-amber-200 dark:bg-amber-900 rounded-full mx-auto mb-6">
                             <svg class="w-8 h-8 text-amber-800 dark:text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                         </div>
@@ -123,9 +124,7 @@
                         </p>
                     </div>
                     
-                    <!-- Fitur 2 -->
                     <div class="bg-stone-50 dark:bg-stone-800 p-8 rounded-xl shadow-lg text-center transform transition duration-500 hover:shadow-2xl hover:-translate-y-2">
-                        <!-- Ikon SVG -->
                         <div class="flex items-center justify-center w-16 h-16 bg-amber-200 dark:bg-amber-900 rounded-full mx-auto mb-6">
                             <svg class="w-8 h-8 text-amber-800 dark:text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7.657 4.657 9.343 3.343A8 8 0 0120.657 14.657c-1.314 1.686-4 4-4 4z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                         </div>
@@ -135,9 +134,7 @@
                         </p>
                     </div>
                     
-                    <!-- Fitur 3 -->
                     <div class="bg-stone-50 dark:bg-stone-800 p-8 rounded-xl shadow-lg text-center transform transition duration-500 hover:shadow-2xl hover:-translate-y-2">
-                        <!-- Ikon SVG -->
                         <div class="flex items-center justify-center w-16 h-16 bg-amber-200 dark:bg-amber-900 rounded-full mx-auto mb-6">
                             <svg class="w-8 h-8 text-amber-800 dark:text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.323-.036-.475-.106L4.81 18.232A2 2 0 013 16.27V8a2 2 0 012-2h3.031a2 2 0 011.765 1.031l2.61 3.916zM14 10V6a2 2 0 00-2-2h-1m-1 4l-2 3"></path></svg>
                         </div>
@@ -150,7 +147,6 @@
             </div>
         </section>
         
-        <!-- ===== Produk Unggulan ===== -->
         <section id="produk" class="py-24 bg-stone-950 dark:bg-black">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -160,13 +156,10 @@
                     </p>
                 </div>
                 
-                <!-- Grid Produk -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     
-                    <!-- Produk 1 -->
                     <div class="bg-stone-900 dark:bg-stone-900 rounded-xl shadow-lg overflow-hidden group">
                         <div class="overflow-hidden">
-                            <!-- GAMBAR DIPERBARUI -->
                             <img id="img-produk-1" src="https://tobonecoffee.my.id/img/Cold%20Brew%20Gula%20Aren.jpg" alt="Kopi Cold Brew Gula Aren" class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6">
@@ -176,7 +169,6 @@
                             </p>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-amber-600">Rp 15.000</span>
-                                <!-- ONCLICK DIPERBARUI -->
                                 <button onclick="openOrderModal('Cold Brew Gula Aren', 'Rp 15.000', 'https://tobonecoffee.my.id/img/Cold%20Brew%20Gula%20Aren.jpg')" class="bg-amber-800 hover:bg-amber-900 text-white font-semibold py-2 px-5 rounded-full transition duration-300 text-sm">
                                     Beli
                                 </button>
@@ -184,10 +176,8 @@
                         </div>
                     </div>
                     
-                    <!-- Produk 2 (Kopi Susu Creamy) -->
                     <div class="bg-stone-900 dark:bg-stone-900 rounded-xl shadow-lg overflow-hidden group">
                         <div class="overflow-hidden">
-                            <!-- GAMBAR DIPERBARUI -->
                             <img id="img-produk-2" src="https://tobonecoffee.my.id/img/Creamy%20Latte.jpg" alt="Kopi Susu Creamy" class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6">
@@ -197,7 +187,6 @@
                             </p>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-amber-600">Rp 18.000</span>
-                                <!-- ONCLICK DIPERBARUI -->
                                 <button onclick="openOrderModal('Kopi Susu Creamy', 'Rp 18.000', 'https://tobonecoffee.my.id/img/Creamy%20Latte.jpg')" class="bg-amber-800 hover:bg-amber-900 text-white font-semibold py-2 px-5 rounded-full transition duration-300 text-sm">
                                     Beli
                                 </button>
@@ -205,10 +194,8 @@
                         </div>
                     </div>
                     
-                    <!-- Produk 3 (Iced Americano) -->
                     <div class="bg-stone-900 dark:bg-stone-900 rounded-xl shadow-lg overflow-hidden group">
                         <div class="overflow-hidden">
-                            <!-- GAMBAR DIPERBARUI -->
                             <img id="img-produk-3" src="https://tobonecoffee.my.id/img/Americano.jpg" alt="Kopi Americano" class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-110">
                         </div>
                         <div class="p-6">
@@ -218,7 +205,6 @@
                             </D>
                             <div class="flex justify-between items-center">
                                 <span class="text-2xl font-bold text-amber-600">Rp 12.000</span>
-                                <!-- ONCLICK DIPERBARUI -->
                                 <button onclick="openOrderModal('Iced Americano', 'Rp 12.000', 'https://tobonecoffee.my.id/img/Americano.jpg')" class="bg-amber-800 hover:bg-amber-900 text-white font-semibold py-2 px-5 rounded-full transition duration-300 text-sm">
                                     Beli
                                 </button>
@@ -229,7 +215,6 @@
             </div>
         </section>
         
-        <!-- ===== Testimoni ===== -->
         <section class="py-24 bg-stone-100 dark:bg-stone-900">
             <div class="container mx-auto px-6">
                 <div class="max-w-3xl mx-auto text-center">
@@ -244,7 +229,6 @@
             </div>
         </section>
 
-        <!-- ===== Lokasi / Peta ===== -->
         <section id="lokasi" class="py-24 bg-stone-950 dark:bg-black">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -254,7 +238,6 @@
                     </p>
                 </div>
                 
-                <!-- Google Maps Embed -->
                 <div class="overflow-hidden rounded-xl shadow-2xl relative z-10">
                     <iframe
                         src="https://maps.google.com/maps?q=-5.147122,119.500039&hl=id&z=17&amp;output=embed"
@@ -269,14 +252,12 @@
             </div>
         </section>
 
-        <!-- ===== CTA / Kontak ===== -->
         <section id="kontak" class="py-24 bg-amber-900 text-white">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl font-bold mb-4">Siap Menikmati Kopi Terbaik?</h2>
                 <p class="text-xl text-amber-200 mb-10 max-w-2xl mx-auto">
                     Klik tombol di bawah ini untuk terhubung langsung dengan kami melalui WhatsApp dan lakukan pemesanan Anda.
                 </p>
-                <!-- Diubah: Onclick memanggil openOrderModal() -->
                 <button onclick="openOrderModal()" class="bg-stone-100 hover:bg-stone-200 text-amber-900 font-bold py-4 px-10 rounded-full text-lg transition duration-300 shadow-xl transform hover:scale-105">
                     Hubungi via WhatsApp
                 </button>
@@ -284,17 +265,12 @@
         </section>
     </main>
 
-    <!-- ===== Modal Form Pemesanan (DIPERBARUI) ===== -->
     <div id="order-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 transition-opacity duration-300">
-        <!-- Konten Modal -->
         <div id="modal-content" class="bg-stone-50 dark:bg-stone-900 rounded-lg shadow-2xl w-full max-w-lg relative max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0">
             
-            <!-- BARU: Gambar Produk -->
             <img id="modal-product-image" src="" alt="Gambar Produk" class="hidden w-full h-48 object-cover rounded-t-lg">
             
-            <!-- Wrapper untuk Padding Konten -->
             <div class="p-6 relative">
-                <!-- Tombol Close -->
                 <button id="close-modal-btn" class="absolute top-4 right-4 text-stone-500 hover:text-stone-800 dark:hover:text-stone-200 transition">
                     <i class="fa-solid fa-times fa-xl"></i>
                 </button>
@@ -302,43 +278,34 @@
                 <h3 class="text-2xl font-bold mb-6 text-stone-900 dark:text-white">Formulir Pemesanan</h3>
                 
                 <form id="order-form" class="space-y-4">
-                    <!-- Pesanan (Pre-filled) -->
                     <div>
                         <label for="form-pesanan" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Pesanan</label>
-                        <!-- Diperbarui: Tambah py-2 px-3 -->
                         <input type="text" id="form-pesanan" class="mt-1 block w-full rounded-md border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm py-2 px-3" readonly>
                     </div>
-                    <!-- Harga (Pre-filled) -->
                     <div>
                         <label for="form-harga" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Harga Satuan</label>
-                        <!-- Diperbarui: Tambah py-2 px-3 -->
                         <input type="text" id="form-harga" class="mt-1 block w-full rounded-md border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm py-2 px-3" readonly>
                     </div>
                     
-                    <!-- Form Fields -->
                     <div>
                         <label for="form-nama" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Nama Pemesan <span class="text-red-500">*</span></label>
-                        <!-- Diperbarui: Tambah py-2 px-3 -->
                         <input type="text" id="form-nama" class="mt-1 block w-full rounded-md border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm py-2 px-3" required>
                         <p id="nama-error" class="hidden text-sm text-red-500 mt-1">Nama tidak boleh kosong.</p>
                     </div>
                     
                     <div>
                         <label for="form-jumlah" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Jumlah <span class="text-red-500">*</span></label>
-                        <!-- Diperbarui: Tambah py-2 px-3 -->
                         <input type="number" id="form-jumlah" value="1" min="1" class="mt-1 block w-full rounded-md border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm py-2 px-3" required>
                     </div>
 
                     <div>
                         <label for="form-alamat" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Alamat Pengantaran (atau Ambil Sendiri) <span class="text-red-500">*</span></label>
-                        <!-- Diperbarui: Tambah py-2 px-3 -->
                         <textarea id="form-alamat" rows="3" class="mt-1 block w-full rounded-md border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm py-2 px-3" placeholder="Isi 'Ambil Sendiri' jika dijemput" required></textarea>
                         <p id="alamat-error" class="hidden text-sm text-red-500 mt-1">Alamat/Info pengambilan tidak boleh kosong.</p>
                     </div>
                     
                     <div>
                         <label for="form-pembayaran" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Metode Pembayaran</label>
-                        <!-- Diperbarui: Tambah py-2 px-3 -->
                         <select id="form-pembayaran" class="mt-1 block w-full rounded-md border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm py-2 px-3">
                             <option>Cash (di tempat / ambil sendiri)</option>
                             <option>Transfer (BCA)</option>
@@ -347,7 +314,6 @@
                     
                     <div>
                         <label for="form-catatan" class="block text-sm font-medium text-stone-700 dark:text-stone-300">Catatan (Opsional)</label>
-                        <!-- Diperbarui: Tambah py-2 px-3 -->
                         <textarea id="form-catatan" rows="2" class="mt-1 block w-full rounded-md border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 shadow-sm focus:border-amber-500 focus:ring-amber-500 sm:text-sm py-2 px-3" placeholder="Contoh: ekstra es, tanpa gula, dll."></textarea>
                     </div>
                     
@@ -361,34 +327,23 @@
             </div>
         </div>
     </div>
-    <!-- ===== Akhir Modal Form Pemesanan ===== -->
 
-
-    <!-- ===== Footer ===== -->
     <footer class="py-16 bg-stone-950 dark:bg-black text-stone-400">
         <div class="container mx-auto px-6">
             <div class="text-center">
-                <!-- Logo Footer DIPERBARUI -->
                 <a href="#" class="text-3xl font-bold text-amber-600 mb-6 inline-block">
                     <img src="https://tobonecoffee.my.id/img/logo.png" alt="Tobone Coffee Logo" class="h-14 w-auto">
                 </a>
-                <!-- Diperbarui: Tautan Media Sosial dengan Ikon + Username -->
                 <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-10 space-y-5 sm:space-y-0 mb-8">
-                    <!-- Instagram -->
                     <a href="https://instagram.com/tobone.coffee" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 text-base text-stone-300 hover:text-amber-600 transition duration-300" aria-label="Instagram">
-                        <!-- Dihapus h-6, ditambahkan text-center untuk memastikan ikon di tengah container w-6 -->
                         <i class="fa-brands fa-instagram fa-lg w-6 text-center"></i>
                         <span>@tobone.coffee</span>
                     </a>
-                    <!-- TikTok -->
                     <a href="https://tiktok.com/tobone.coffee" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 text-base text-stone-300 hover:text-amber-600 transition duration-300" aria-label="TikTok">
-                        <!-- Dihapus h-6, ditambahkan text-center -->
                         <i class="fa-brands fa-tiktok fa-lg w-6 text-center"></i>
                         <span>@tobone.coffee</span>
                     </a>
-                    <!-- Facebook -->
                     <a href="https://facebook.com/tobone.coffee" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 text-base text-stone-300 hover:text-amber-600 transition duration-300" aria-label="Facebook">
-                        <!-- Dihapus h-6, ditambahkan text-center -->
                         <i class="fa-brands fa-facebook fa-lg w-6 text-center"></i>
                         <span>@tobone.coffee</span>
                     </a>
@@ -400,16 +355,13 @@
         </div>
     </footer>
 
-    <!-- JavaScript untuk Menu Mobile DAN Modal Form -->
     <script>
-        // --- Referensi Elemen Modal ---
         const modal = document.getElementById('order-modal');
         const modalContent = document.getElementById('modal-content');
         const closeModalBtn = document.getElementById('close-modal-btn');
         const orderForm = document.getElementById('order-form');
-        const modalProductImage = document.getElementById('modal-product-image'); // BARU
+        const modalProductImage = document.getElementById('modal-product-image');
         
-        // Referensi Form Fields
         const formPesanan = document.getElementById('form-pesanan');
         const formHarga = document.getElementById('form-harga');
         const formNama = document.getElementById('form-nama');
@@ -418,17 +370,13 @@
         const formPembayaran = document.getElementById('form-pembayaran');
         const formCatatan = document.getElementById('form-catatan');
         
-        // Referensi Error Messages
         const namaError = document.getElementById('nama-error');
         const alamatError = document.getElementById('alamat-error');
 
-        // --- Fungsi untuk membuka Modal (DIPERBARUI) ---
-        function openOrderModal(productName = '', productPrice = '', productImageSrc = '') { // Tambah productImageSrc
-            // Reset error messages
+        function openOrderModal(productName = '', productPrice = '', productImageSrc = '') {
             namaError.classList.add('hidden');
             alamatError.classList.add('hidden');
 
-            // BARU: Logika untuk menampilkan gambar
             if (productImageSrc) {
                 modalProductImage.src = productImageSrc;
                 modalProductImage.classList.remove('hidden');
@@ -438,13 +386,11 @@
             }
 
             if (productName && productPrice) {
-                // Jika tombol "Beli" produk tertentu diklik
                 formPesanan.value = productName;
                 formHarga.value = productPrice;
                 formPesanan.setAttribute('readonly', true);
                 formHarga.setAttribute('readonly', true);
             } else {
-                // Jika tombol "Pesan Sekarang" umum diklik
                 formPesanan.value = '';
                 formHarga.value = '';
                 formPesanan.removeAttribute('readonly');
@@ -453,9 +399,7 @@
                 formHarga.placeholder = 'Dikosongkan jika memesan manual';
             }
             
-            // Tampilkan modal dengan animasi
             modal.classList.remove('hidden');
-            // Sedikit delay agar transisi CSS terbaca
             setTimeout(() => {
                 modal.classList.add('opacity-100');
                 modalContent.classList.add('scale-100', 'opacity-100');
@@ -463,26 +407,21 @@
             }, 10);
         }
 
-        // --- Fungsi untuk menutup Modal (DIPERBARUI) ---
         function closeOrderModal() {
-            // Animasi tutup
             modal.classList.remove('opacity-100');
             modalContent.classList.remove('scale-100', 'opacity-100');
             modalContent.classList.add('scale-95', 'opacity-0');
             
-            // Tunggu animasi selesai baru di-hidden
             setTimeout(() => {
                 modal.classList.add('hidden');
-                modalProductImage.src = ''; // BARU: Hapus gambar
-                modalProductImage.classList.add('hidden'); // BARU: Sembunyikan gambar
-            }, 300); // Durasi harus sama dengan transisi CSS
+                modalProductImage.src = '';
+                modalProductImage.classList.add('hidden');
+            }, 300);
         }
 
-        // --- Fungsi untuk Kirim Form ke WhatsApp ---
         function handleFormSubmit(event) {
-            event.preventDefault(); // Mencegah form reload halaman
+            event.preventDefault(); 
 
-            // Validasi Sederhana
             let isValid = true;
             if (formNama.value.trim() === '') {
                 namaError.classList.remove('hidden');
@@ -499,10 +438,9 @@
             }
 
             if (!isValid) {
-                return; // Stop jika tidak valid
+                return;
             }
 
-            // Ambil semua data dari form
             const pesanan = formPesanan.value || '(Pesanan manual)';
             const harga = formHarga.value ? `(${formHarga.value})` : '';
             const nama = formNama.value;
@@ -511,8 +449,7 @@
             const pembayaran = formPembayaran.value;
             const catatan = formCatatan.value || 'Tidak ada';
 
-            // Bangun pesan WhatsApp
-            const phoneNumber = '6287841590028'; // Nomor WA Anda
+            const phoneNumber = '6287841590028';
             let message = "Halo Kak, saya mau pesan Kopi Tobone.\n\n";
             message += "*--- DETAIL PESANAN ---*\n";
             message += `*Nama Pemesan:*\n${nama}\n\n`;
@@ -521,54 +458,48 @@
             message += `*Alamat Pengantaran:*\n${alamat}\n\n`;
             message += `*Metode Pembayaran:*\n${pembayaran}\n\n`;
             message += `*Catatan:*\n${catatan}\n\n`;
+            
+            // --- PERUBAHAN DI SINI ---
+            // Mengambil URL website saat ini dan menambahkannya ke pesan
+            const websiteURL = window.location.href;
+            message += `*Dipesan melalui:*\n${websiteURL}\n\n`;
+            // --- AKHIR PERUBAHAN ---
+            
             message += "Mohon konfirmasi pesanannya ya, Kak. Terima kasih!";
 
-            // Encode dan buka WhatsApp
             const encodedMessage = encodeURIComponent(message);
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             
             window.open(whatsappURL, '_blank');
             
-            // Tutup modal setelah kirim
             closeOrderModal();
-            // Reset form (opsional)
             orderForm.reset();
             formJumlah.value = '1';
         }
 
-        // --- Event Listeners ---
-        // 1. Tombol Close Modal
         closeModalBtn.addEventListener('click', closeOrderModal);
         
-        // 2. Klik di luar modal (backdrop) untuk menutup
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
                 closeOrderModal();
             }
         });
 
-        // 3. Submit Form
         orderForm.addEventListener('submit', handleFormSubmit);
 
-
-        // --- JavaScript untuk Menu Mobile ---
         const menuBtn = document.getElementById('menu-btn');
         const menuLinks = document.getElementById('menu-links');
         const menuLinksList = document.querySelectorAll('.menu-link');
 
-        // Fungsi untuk toggle menu
         function toggleMenu() {
             menuLinks.classList.toggle('hidden');
             
-            // Animasi tombol hamburger
             if (menuLinks.classList.contains('hidden')) {
-                // Menu tertutup
                 menuBtn.innerHTML = `
                     <svg class="w-6 h-6 text-stone-800 dark:text-stone-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>`;
             } else {
-                // Menu terbuka
                 menuBtn.innerHTML = `
                     <svg class="w-6 h-6 text-stone-800 dark:text-stone-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -576,14 +507,10 @@
             }
         }
 
-        // Event listener untuk tombol menu
         menuBtn.addEventListener('click', toggleMenu);
 
-        // Event listener untuk setiap link di menu mobile (agar menu tertutup setelah di-klik)
         menuLinksList.forEach(link => {
             link.addEventListener('click', () => {
-                // Jika link adalah tombol, jangan tutup menu (karena modal akan terbuka)
-                // Jika link adalah anchor (href), tutup menu
                 if (link.tagName.toLowerCase() === 'a') {
                     toggleMenu();
                 }
