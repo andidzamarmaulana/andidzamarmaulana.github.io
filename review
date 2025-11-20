@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Jujur Time! 🍔</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Fredoka', 'sans-serif'],
+                        body: ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        'genz-dark': '#0f0f16',
+                        'genz-card': '#1d1d2b',
+                        'neon-purple': '#8B5CF6',
+                        'neon-pink': '#EC4899',
+                        'neon-cyan': '#06b6d4',
+                    },
+                    animation: {
+                        'bounce-short': 'bounce-short 0.5s ease-in-out 1',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        'bounce-short': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Glassmorphism */
+        .glass {
+            background: rgba(29, 29, 43, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* --- FIX RANGE SLIDER --- */
+        input[type=range] {
+            -webkit-appearance: none; 
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 32px; 
+            width: 32px; 
+            background: transparent;
+            border: none;
+            margin-top: 0; 
+        }
+        input[type=range]:focus { outline: none; }
+    </style>
+</head>
+<body class="bg-genz-dark text-white font-body min-h-screen flex items-center justify-center p-4 selection:bg-neon-pink selection:text-white">
+
+    <div class="w-full max-w-md relative">
+        
+        <!-- Background Decor -->
+        <div class="absolute -top-20 -left-20 w-64 h-64 bg-neon-purple rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse"></div>
+        <div class="absolute top-40 -right-20 w-56 h-56 bg-neon-cyan rounded-full mix-blend-screen filter blur-[80px] opacity-20"></div>
+
+        <!-- Form Card -->
+        <div class="glass rounded-3xl overflow-hidden shadow-2xl relative z-10 animate-slide-up">
+            
+            <!-- Header -->
+            <div class="relative h-40 bg-gradient-to-br from-neon-purple via-purple-600 to-neon-pink flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+                <div class="text-center z-10 mt-4 px-4">
+                    <h1 class="font-display text-3xl font-bold drop-shadow-md">Review Jujur! 🍔</h1>
+                    <p class="text-sm font-semibold text-white/90 mt-1">Bantu kita biar makin <span class="italic">Slay</span> ✨</p>
+                </div>
+                
+                <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+                    <svg class="relative block w-[calc(130%+1.3px)] h-[40px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-genz-card opacity-90"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Form Content -->
+            <!-- PENTING: name="submit-to-google-sheet" digunakan untuk JS -->
+            <form id="feedbackForm" name="submit-to-google-sheet" class="p-6 space-y-8 bg-genz-card/50">
+
+                <!-- Question 1: Emoji Rating -->
+                <div class="text-center space-y-4">
+                    <label class="block font-display text-lg text-gray-200">Gimana rasanya hari ini?</label>
+                    <div class="flex justify-center gap-4 items-center">
+                        <!-- Added name="rasa" -->
+                        <div class="relative group">
+                            <input type="radio" name="rasa" id="rate1" value="Buruk" class="peer hidden">
+                            <label for="rate1" class="text-4xl cursor-pointer transition-all duration-300 block opacity-50 grayscale peer-checked:opacity-100 peer-checked:grayscale-0 peer-checked:scale-125 hover:scale-110 hover:opacity-80">🤢</label>
+                        </div>
+                        <div class="relative group">
+                            <input type="radio" name="rasa" id="rate2" value="Biasa Aja" class="peer hidden">
+                            <label for="rate2" class="text-4xl cursor-pointer transition-all duration-300 block opacity-50 grayscale peer-checked:opacity-100 peer-checked:grayscale-0 peer-checked:scale-125 hover:scale-110 hover:opacity-80">😐</label>
+                        </div>
+                        <div class="relative group">
+                            <input type="radio" name="rasa" id="rate3" value="Enak" class="peer hidden">
+                            <label for="rate3" class="text-4xl cursor-pointer transition-all duration-300 block opacity-50 grayscale peer-checked:opacity-100 peer-checked:grayscale-0 peer-checked:scale-125 hover:scale-110 hover:opacity-80">😋</label>
+                        </div>
+                        <div class="relative group">
+                            <input type="radio" name="rasa" id="rate4" value="Pecah Banget" class="peer hidden" checked>
+                            <label for="rate4" class="text-4xl cursor-pointer transition-all duration-300 block opacity-50 grayscale peer-checked:opacity-100 peer-checked:grayscale-0 peer-checked:scale-125 hover:scale-110 hover:opacity-80">🤩</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2: Porsi Chips -->
+                <div class="space-y-3 pt-2">
+                    <label class="block font-display text-lg text-gray-200">Porsi Check! 👀</label>
+                    <div class="flex flex-wrap gap-3">
+                        <!-- Added name="porsi" -->
+                        <div class="flex-1 min-w-[90px]">
+                            <input type="radio" name="porsi" id="porsi1" value="Dikit" class="peer hidden">
+                            <label for="porsi1" class="block w-full text-center py-3 px-2 rounded-xl border border-gray-600 cursor-pointer text-sm font-bold text-gray-400 bg-gray-800/50 transition-all duration-200 hover:border-neon-pink peer-checked:bg-gradient-to-r peer-checked:from-neon-purple peer-checked:to-neon-pink peer-checked:text-white peer-checked:border-transparent">Dikit ☹️</label>
+                        </div>
+                        <div class="flex-1 min-w-[90px]">
+                            <input type="radio" name="porsi" id="porsi2" value="Pas" class="peer hidden" checked>
+                            <label for="porsi2" class="block w-full text-center py-3 px-2 rounded-xl border border-gray-600 cursor-pointer text-sm font-bold text-gray-400 bg-gray-800/50 transition-all duration-200 hover:border-neon-pink peer-checked:bg-gradient-to-r peer-checked:from-neon-purple peer-checked:to-neon-pink peer-checked:text-white peer-checked:border-transparent">Pas! 👌</label>
+                        </div>
+                        <div class="flex-1 min-w-[90px]">
+                            <input type="radio" name="porsi" id="porsi3" value="Kebanyakan" class="peer hidden">
+                            <label for="porsi3" class="block w-full text-center py-3 px-2 rounded-xl border border-gray-600 cursor-pointer text-sm font-bold text-gray-400 bg-gray-800/50 transition-all duration-200 hover:border-neon-pink peer-checked:bg-gradient-to-r peer-checked:from-neon-purple peer-checked:to-neon-pink peer-checked:text-white peer-checked:border-transparent">Kebanyakan 🤯</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3: Range Slider (Harga) -->
+                <div class="space-y-4 pt-2">
+                    <div class="flex justify-between items-end">
+                        <label class="font-display text-lg text-gray-200">Harga vs Rasa?</label>
+                        <span id="priceValue" class="text-neon-cyan font-bold text-sm bg-cyan-900/30 px-3 py-1 rounded-lg border border-cyan-500/30">Worth it!</span>
+                    </div>
+                    
+                    <div class="relative w-full h-8 flex items-center justify-center">
+                        <!-- Added name="harga" -->
+                        <input type="range" name="harga" min="1" max="3" value="2" step="1" id="priceRange" class="w-full h-full absolute top-0 left-0 z-50">
+                        
+                        <div class="w-full h-2 bg-gray-700/50 rounded-full absolute z-10 overflow-hidden pointer-events-none">
+                            <div id="priceFill" class="h-full bg-gradient-to-r from-neon-cyan to-neon-purple w-1/2 transition-all duration-200 ease-out"></div>
+                        </div>
+                        <div id="priceThumb" class="w-6 h-6 bg-white rounded-full shadow-[0_0_15px_rgba(6,182,212,0.8)] absolute z-20 left-1/2 -translate-x-1/2 pointer-events-none transition-all duration-200 ease-out flex items-center justify-center border-2 border-neon-cyan">
+                            <div class="w-1.5 h-1.5 bg-neon-cyan rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between text-xs text-gray-500 font-bold px-1 select-none">
+                        <span class="cursor-pointer hover:text-gray-300" onclick="setSlider(1)">Mahal 💸</span>
+                        <span class="cursor-pointer hover:text-gray-300" onclick="setSlider(2)">Pas 🤝</span>
+                        <span class="cursor-pointer hover:text-gray-300" onclick="setSlider(3)">Murah 🤑</span>
+                    </div>
+                    <!-- Input sembunyi untuk mengirim text label (Mahal/Pas/Murah) ke Google Sheet, bukan angka 1/2/3 -->
+                    <input type="hidden" name="harga_label" id="hargaLabelInput" value="Worth it! 🤝">
+                </div>
+
+                <!-- Question 4: Text Area -->
+                <div class="space-y-3 pt-2">
+                    <label class="block font-display text-lg text-gray-200">Spill tehnya dong! 🍵</label>
+                    <div class="relative group">
+                        <!-- Added name="pesan" -->
+                        <textarea name="pesan" rows="3" placeholder="Misal: Tambahin saus keju yang banyak kak..." 
+                        class="w-full bg-gray-800/50 border border-gray-600 rounded-2xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all duration-300 resize-none z-10 relative"></textarea>
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-neon-purple to-neon-pink opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none -z-0 blur-sm"></div>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="group w-full relative py-4 px-6 rounded-2xl bg-gradient-to-r from-neon-purple to-neon-pink text-white font-bold font-display text-lg shadow-[0_10px_20px_rgba(236,72,153,0.3)] hover:shadow-[0_15px_30px_rgba(236,72,153,0.5)] hover:-translate-y-1 active:translate-y-0 active:scale-95 transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 flex items-center justify-center gap-2">Gas Kirim! 🚀</span>
+                    <div class="absolute top-0 -left-full w-full h-full bg-white/20 skew-x-[45deg] group-hover:left-full transition-all duration-700 ease-in-out pointer-events-none"></div>
+                </button>
+
+            </form>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-6 font-body opacity-60">Dibuat dengan ❤️ untuk perutmu.</p>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="bg-genz-card border border-gray-700 p-8 rounded-3xl text-center max-w-xs w-full transform scale-90 transition-transform duration-300 shadow-2xl" id="modalContent">
+            <div class="text-6xl mb-4 animate-bounce-short">🎉</div>
+            <h2 class="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple mb-2">Mantap Bestie!</h2>
+            <p class="text-gray-400 mb-6">Review kamu udah masuk Google Sheet!</p>
+            <button id="closeModal" class="w-full py-3 rounded-xl bg-gray-700 hover:bg-gray-600 text-white font-bold transition-colors border border-gray-600">Oke, Cool!</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. KONFIGURASI URL GOOGLE SCRIPT ---
+        // Nanti paste URL Web App kamu di antara tanda kutip di bawah ini:
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzmBUZAKquqQW06opWGqD0qfhE_Riy-p2BAZVrzLOpNreEDJ_DAagU0nQ2IkMEz-8qUMg/exec'; 
+        
+        // --- Elements ---
+        const priceRange = document.getElementById('priceRange');
+        const priceFill = document.getElementById('priceFill');
+        const priceThumb = document.getElementById('priceThumb');
+        const priceValue = document.getElementById('priceValue');
+        const hargaLabelInput = document.getElementById('hargaLabelInput'); // Hidden input
+        const form = document.forms['submit-to-google-sheet'];
+        const submitBtn = document.getElementById('submitBtn');
+        const modal = document.getElementById('successModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+
+        // --- Config Data ---
+        const texts = ["Mahal 😭", "Worth it! 🤝", "Murah Banget 🤑"];
+        const colors = ["text-red-400", "text-neon-cyan", "text-green-400"];
+        const bgColors = ["bg-red-900/30", "bg-cyan-900/30", "bg-green-900/30"];
+        const borderColors = ["border-red-500/30", "border-cyan-500/30", "border-green-500/30"];
+
+        function updateSliderVisuals(val) {
+            const percent = ((val - 1) / 2) * 100;
+            priceFill.style.width = `${percent}%`;
+            priceThumb.style.left = `${percent}%`;
+            
+            const index = val - 1;
+            priceValue.textContent = texts[index];
+            // Simpan text label ke hidden input agar terkirim ke sheet
+            hargaLabelInput.value = texts[index]; 
+            
+            priceValue.className = `font-bold text-sm px-3 py-1 rounded-lg border transition-all duration-300 ${colors[index]} ${bgColors[index]} ${borderColors[index]}`;
+        }
+
+        window.setSlider = (val) => {
+            priceRange.value = val;
+            updateSliderVisuals(val);
+        };
+
+        priceRange.addEventListener('input', (e) => {
+            updateSliderVisuals(e.target.value);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateSliderVisuals(priceRange.value);
+        });
+
+        // --- FORM SUBMIT LOGIC (CONNECT TO GOOGLE SHEET) ---
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Cek apakah URL Script sudah diisi
+            if (!scriptURL) {
+                alert("Eits! Kamu belum memasukkan URL Google Apps Script di kodingan (baris 136). Ikuti petunjuk di chat ya!");
+                return;
+            }
+
+            // Loading State
+            const originalContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="animate-pulse">Lagi Ngirim... 📡</span>';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            // Kirim Data ke Google Apps Script
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    // Sukses!
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modalContent.classList.remove('scale-90');
+                    modalContent.classList.add('scale-100');
+                    
+                    // Reset Button
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    
+                    // Reset Form & Slider
+                    form.reset();
+                    updateSliderVisuals(2);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Yah error! Coba cek koneksi internetmu.");
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.add('scale-90');
+            modalContent.classList.remove('scale-100');
+        });
+    </script>
+</body>
+</html>
