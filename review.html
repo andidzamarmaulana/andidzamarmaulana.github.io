@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -102,12 +103,14 @@
             </div>
 
             <!-- Form Content -->
-            <form id="feedbackForm" class="p-6 space-y-8 bg-genz-card/50">
+            <!-- PENTING: name="submit-to-google-sheet" digunakan untuk JS -->
+            <form id="feedbackForm" name="submit-to-google-sheet" class="p-6 space-y-8 bg-genz-card/50">
 
                 <!-- Question 1: Emoji Rating -->
                 <div class="text-center space-y-4">
                     <label class="block font-display text-lg text-gray-200">Gimana rasanya hari ini?</label>
                     <div class="flex justify-center gap-4 items-center">
+                        <!-- Added name="rasa" -->
                         <div class="relative group">
                             <input type="radio" name="rasa" id="rate1" value="Buruk" class="peer hidden">
                             <label for="rate1" class="text-4xl cursor-pointer transition-all duration-300 block opacity-50 grayscale peer-checked:opacity-100 peer-checked:grayscale-0 peer-checked:scale-125 hover:scale-110 hover:opacity-80">🤢</label>
@@ -131,6 +134,7 @@
                 <div class="space-y-3 pt-2">
                     <label class="block font-display text-lg text-gray-200">Porsi Check! 👀</label>
                     <div class="flex flex-wrap gap-3">
+                        <!-- Added name="porsi" -->
                         <div class="flex-1 min-w-[90px]">
                             <input type="radio" name="porsi" id="porsi1" value="Dikit" class="peer hidden">
                             <label for="porsi1" class="block w-full text-center py-3 px-2 rounded-xl border border-gray-600 cursor-pointer text-sm font-bold text-gray-400 bg-gray-800/50 transition-all duration-200 hover:border-neon-pink peer-checked:bg-gradient-to-r peer-checked:from-neon-purple peer-checked:to-neon-pink peer-checked:text-white peer-checked:border-transparent">Dikit ☹️</label>
@@ -154,6 +158,7 @@
                     </div>
                     
                     <div class="relative w-full h-8 flex items-center justify-center">
+                        <!-- Added name="harga" -->
                         <input type="range" name="harga" min="1" max="3" value="2" step="1" id="priceRange" class="w-full h-full absolute top-0 left-0 z-50">
                         
                         <div class="w-full h-2 bg-gray-700/50 rounded-full absolute z-10 overflow-hidden pointer-events-none">
@@ -169,6 +174,7 @@
                         <span class="cursor-pointer hover:text-gray-300" onclick="setSlider(2)">Pas 🤝</span>
                         <span class="cursor-pointer hover:text-gray-300" onclick="setSlider(3)">Murah 🤑</span>
                     </div>
+                    <!-- Input sembunyi untuk mengirim text label (Mahal/Pas/Murah) ke Google Sheet, bukan angka 1/2/3 -->
                     <input type="hidden" name="harga_label" id="hargaLabelInput" value="Worth it! 🤝">
                 </div>
 
@@ -176,6 +182,7 @@
                 <div class="space-y-3 pt-2">
                     <label class="block font-display text-lg text-gray-200">Spill tehnya dong! 🍵</label>
                     <div class="relative group">
+                        <!-- Added name="pesan" -->
                         <textarea name="pesan" rows="3" placeholder="Misal: Tambahin saus keju yang banyak kak..." 
                         class="w-full bg-gray-800/50 border border-gray-600 rounded-2xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all duration-300 resize-none z-10 relative"></textarea>
                         <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-neon-purple to-neon-pink opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none -z-0 blur-sm"></div>
@@ -197,33 +204,29 @@
         <div class="bg-genz-card border border-gray-700 p-8 rounded-3xl text-center max-w-xs w-full transform scale-90 transition-transform duration-300 shadow-2xl" id="modalContent">
             <div class="text-6xl mb-4 animate-bounce-short">🎉</div>
             <h2 class="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple mb-2">Mantap Bestie!</h2>
-            <p class="text-gray-400 mb-6">Tinggal satu langkah lagi, kirim chatnya ya!</p>
-            <!-- Tombol ini nanti fungsinya diatur via Javascript -->
-            <button id="waButton" class="w-full py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold transition-colors border border-green-400 shadow-[0_4px_14px_rgba(34,197,94,0.4)] flex items-center justify-center gap-2">
-                <span>Lanjut ke WA 📲</span>
-            </button>
+            <p class="text-gray-400 mb-6">Review kamu udah masuk Google Sheet!</p>
+            <button id="closeModal" class="w-full py-3 rounded-xl bg-gray-700 hover:bg-gray-600 text-white font-bold transition-colors border border-gray-600">Oke, Cool!</button>
         </div>
     </div>
 
     <script>
-        // --- KONFIGURASI WHATSAPP ---
-        // Ganti dengan nomor HP Anda (pakai 62, jangan 08)
-        // Contoh: '628123456789'
-        const whatsappNumber = '628123456789'; 
+        // --- 1. KONFIGURASI URL GOOGLE SCRIPT ---
+        // Nanti paste URL Web App kamu di antara tanda kutip di bawah ini:
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzmBUZAKquqQW06opWGqD0qfhE_Riy-p2BAZVrzLOpNreEDJ_DAagU0nQ2IkMEz-8qUMg/exec'; 
         
         // --- Elements ---
         const priceRange = document.getElementById('priceRange');
         const priceFill = document.getElementById('priceFill');
         const priceThumb = document.getElementById('priceThumb');
         const priceValue = document.getElementById('priceValue');
-        const hargaLabelInput = document.getElementById('hargaLabelInput'); 
-        const form = document.getElementById('feedbackForm');
+        const hargaLabelInput = document.getElementById('hargaLabelInput'); // Hidden input
+        const form = document.forms['submit-to-google-sheet'];
         const submitBtn = document.getElementById('submitBtn');
         const modal = document.getElementById('successModal');
         const modalContent = document.getElementById('modalContent');
-        const waButton = document.getElementById('waButton'); // Tombol di dalam Modal
+        const closeModal = document.getElementById('closeModal');
 
-        // --- Config Visual Data ---
+        // --- Config Data ---
         const texts = ["Mahal 😭", "Worth it! 🤝", "Murah Banget 🤑"];
         const colors = ["text-red-400", "text-neon-cyan", "text-green-400"];
         const bgColors = ["bg-red-900/30", "bg-cyan-900/30", "bg-green-900/30"];
@@ -236,7 +239,9 @@
             
             const index = val - 1;
             priceValue.textContent = texts[index];
+            // Simpan text label ke hidden input agar terkirim ke sheet
             hargaLabelInput.value = texts[index]; 
+            
             priceValue.className = `font-bold text-sm px-3 py-1 rounded-lg border transition-all duration-300 ${colors[index]} ${bgColors[index]} ${borderColors[index]}`;
         }
 
@@ -253,47 +258,51 @@
             updateSliderVisuals(priceRange.value);
         });
 
-        // --- LOGIC KIRIM WA ---
-        form.addEventListener('submit', (e) => {
+        // --- FORM SUBMIT LOGIC (CONNECT TO GOOGLE SHEET) ---
+        form.addEventListener('submit', e => {
             e.preventDefault();
 
-            // 1. Ambil Data Form
-            const formData = new FormData(form);
-            const rasa = formData.get('rasa');
-            const porsi = formData.get('porsi');
-            const harga = document.getElementById('hargaLabelInput').value;
-            const pesan = formData.get('pesan') || '-';
+            // Cek apakah URL Script sudah diisi
+            if (!scriptURL) {
+                alert("Eits! Kamu belum memasukkan URL Google Apps Script di kodingan (baris 136). Ikuti petunjuk di chat ya!");
+                return;
+            }
 
-            // 2. Format Pesan WhatsApp
-            // %0A adalah kode untuk Enter (baris baru) di URL
-            const text = `*Review Jujur!* 🍔%0A%0A` +
-                         `👅 *Rasa:* ${rasa}%0A` +
-                         `🍽 *Porsi:* ${porsi}%0A` +
-                         `💰 *Harga:* ${harga}%0A` +
-                         `💌 *Pesan:* ${pesan}`;
+            // Loading State
+            const originalContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="animate-pulse">Lagi Ngirim... 📡</span>';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
-            // 3. Buat URL WhatsApp
-            const waURL = `https://wa.me/${whatsappNumber}?text=${text}`;
-
-            // 4. Tampilkan Modal Sukses
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-90');
-            modalContent.classList.add('scale-100');
-
-            // 5. Set Aksi Tombol di Modal
-            // Saat tombol "Lanjut ke WA" diklik, buka URL WA
-            waButton.onclick = function() {
-                window.location.href = waURL; // Alihkan ke WA
-                
-                // Opsional: Tutup modal dan reset form setelah diklik
-                setTimeout(() => {
-                    modal.classList.add('opacity-0', 'pointer-events-none');
-                    modalContent.classList.add('scale-90');
-                    modalContent.classList.remove('scale-100');
+            // Kirim Data ke Google Apps Script
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    // Sukses!
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modalContent.classList.remove('scale-90');
+                    modalContent.classList.add('scale-100');
+                    
+                    // Reset Button
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    
+                    // Reset Form & Slider
                     form.reset();
                     updateSliderVisuals(2);
-                }, 1000);
-            };
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert("Yah error! Coba cek koneksi internetmu.");
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.add('scale-90');
+            modalContent.classList.remove('scale-100');
         });
     </script>
 </body>
